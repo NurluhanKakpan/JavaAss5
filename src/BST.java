@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class BST<K extends Comparable<K>, V> {
     private Node root;
 
@@ -69,7 +72,6 @@ public class BST<K extends Comparable<K>, V> {
             } else if (node.right == null) {
                 return node.left;
             } else {
-                // Node to delete has both left and right child
                 Node minRightNode = findMin(node.right);
                 node.key = minRightNode.key;
                 node.val = minRightNode.val;
@@ -84,5 +86,32 @@ public class BST<K extends Comparable<K>, V> {
             node = node.left;
         }
         return node;
+    }
+    public Iterable<K> iterator() {
+        List<K> keys = new ArrayList<>();
+        inorderTraversal(root, keys);
+        return keys;
+    }
+
+
+    private void inorderTraversal(Node node, List<K> keys) {
+        if (node == null)
+            return;
+        inorderTraversal(node.left, keys);
+        keys.add(node.key);
+        inorderTraversal(node.right, keys);
+    }
+
+
+    public int size() {
+        return size(root);
+    }
+
+    private int size(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            return 1 + size(node.left) + size(node.right);
+        }
     }
 }
