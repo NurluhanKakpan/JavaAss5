@@ -1,7 +1,6 @@
 public class BST<K extends Comparable<K>, V> {
     private Node root;
 
-    // Node class representing a node in the binary search tree
     private class Node {
         private K key;
         private V val;
@@ -36,7 +35,6 @@ public class BST<K extends Comparable<K>, V> {
         return node != null ? node.val : null;
     }
 
-    // Recursive helper method to search for a key in the binary search tree
     private Node get(Node node, K key) {
         if (node == null) {
             return null;
@@ -49,5 +47,42 @@ public class BST<K extends Comparable<K>, V> {
         } else {
             return node;
         }
+    }
+    public void delete(K key) {
+        root = delete(root, key);
+    }
+
+
+    private Node delete(Node node, K key) {
+        if (node == null) {
+            return null;
+        }
+        int cmp = key.compareTo(node.key);
+        if (cmp < 0) {
+            node.left = delete(node.left, key);
+        } else if (cmp > 0) {
+            node.right = delete(node.right, key);
+        } else {
+            // Node to delete found
+            if (node.left == null) {
+                return node.right;
+            } else if (node.right == null) {
+                return node.left;
+            } else {
+                // Node to delete has both left and right child
+                Node minRightNode = findMin(node.right);
+                node.key = minRightNode.key;
+                node.val = minRightNode.val;
+                node.right = delete(node.right, minRightNode.key);
+            }
+        }
+        return node;
+    }
+
+    public Node findMin(Node node) {
+        while (node.left != null) {
+            node = node.left;
+        }
+        return node;
     }
 }
