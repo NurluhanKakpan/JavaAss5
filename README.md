@@ -9,6 +9,7 @@ The BST is a data structure that allows efficient insertion, retrieval, and dele
 - `get(key)`: Retrieves the value associated with a given key from the BST.
 - `delete(key)`: Removes a key-value pair from the BST.
 - `size()`: Returns the number of key-value pairs in the BST.
+- `maxHeight()`: Returns the number of height in the BST 
 
 ## Getting Started
 
