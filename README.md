@@ -20,7 +20,9 @@ To use the Binary Search Tree implementation in your Java project, follow these 
     you can clone https://github.com/NurluhanKakpan/JavaAss5.git
 
 ##Testing
- bst.put(5, "Value 5"); // Insert key-value pair (5, "Value 5")
+
+
+    bst.put(5, "Value 5"); // Insert key-value pair (5, "Value 5")
         bst.put(2, "Value 2"); // Insert key-value pair (2, "Value 2")
         bst.put(7, "Value 7"); // Insert key-value pair (7, "Value 7")
         bst.put(1, "Value 1"); // Insert key-value pair (1, "Value 1")
